@@ -14,10 +14,10 @@ import org.springframework.web.servlet.ModelAndView;
 
 import java.time.LocalDateTime;
 
+import static org.springframework.http.HttpStatus.*;
 import static org.springframework.http.HttpStatus.BAD_REQUEST;
 import static org.springframework.http.HttpStatus.INTERNAL_SERVER_ERROR;
 import static org.springframework.http.HttpStatus.NOT_FOUND;
-import static org.springframework.http.HttpStatus.NOT_IMPLEMENTED;
 
 @ControllerAdvice
 @Order(Ordered.HIGHEST_PRECEDENCE)
@@ -45,7 +45,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(OperationNotSupportedException.class)
     public ModelAndView handleOperationNotSupportedException(final OperationNotSupportedException ex) {
-        return setUpModel(ex, NOT_IMPLEMENTED);
+        return setUpModel(ex, METHOD_NOT_ALLOWED);
     }
 
     @ExceptionHandler(Exception.class)
