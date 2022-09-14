@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="ISO-8859-1">
     <title>Add tree</title>
@@ -9,12 +10,17 @@
           crossorigin="anonymous">
 </head>
 <body>
+<div sec:authorize="isAuthenticated()">
+    <form id="logoutForm" method="POST" th:action="@{/logout}">
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+    </form>
+</div>
 <div class="container">
     <h1>Trees</h1>
     <hr>
     <h2>Save Tree</h2>
 
-    <form action="#" th:action="@{/save}" th:object="${tree}"
+    <form action="#" th:action="@{/trees/save}" th:object="${tree}"
           method="POST">
 
         <input type="text" th:field="*{name}"
@@ -23,12 +29,12 @@
         <input type="text" th:field="*{description}"
                placeholder="Description" class="form-control mb-4 col-4">
 
-        <button type="submit" class="btn btn-info col-2"> Save Tree</button>
+        <button type="submit" class="btn btn-info col-2">Save Tree</button>
     </form>
 
     <hr>
 
-    <a th:href = "@{/}"> Back to Trees List</a>
+    <a th:href="@{/}"> Back to Trees List</a>
 </div>
 </body>
 </html>
