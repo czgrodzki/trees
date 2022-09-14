@@ -1,8 +1,8 @@
 <h1>Trees</h1>
-<p>Simple crud app with Kotlin and Spring</p>
+<p>Simple crud app with Java and Spring</p>
 <h3>Toolset</h3>
 <ul>
-<li>Kotlin</li>
+<li>Java</li>
 <li>Spring Boot</li>
 <li>Maven</li>
 <li>PostgreSQL</li>
