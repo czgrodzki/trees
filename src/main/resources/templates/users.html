@@ -35,17 +35,18 @@
             </tr>
             </thead>
             <tbody>
-            <tr th:each="user : ${users}">
-                <td th:text="${user.getId()}"></td>
-                <td th:text="${user.getUsername()}"></td>
+            <tr th:each="aUser : ${users}">
+                <td th:text="${aUser.getId()}"></td>
+                <td th:text="${aUser.getUsername()}"></td>
                 <td >
-                    <a th:href="@{user/update/{id}(id=${user.getId()})}" class="btn btn-primary">Update</a>
-                    <a th:href="@{user/delete/{id}(id=${user.getId()})}" class="btn btn-danger">Delete</a>
+                    <a th:href="@{/user/update/{id}(id=${aUser.getId()})}" class="btn btn-primary">Update</a>
+                    <a th:href="@{/user/delete/{id}(id=${aUser.getId()})}" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
             </tbody>
         </table>
     </div>
+    <a th:href="@{/trees}"> Back to Trees List</a>
 </div>
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
