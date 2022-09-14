@@ -6,8 +6,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class TreesApplication {
 
-	public static void main(String[] args) {
-		SpringApplication.run(TreesApplication.class, args);
-	}
+    public static void main(String[] args) {
+        SpringApplication.run(TreesApplication.class, args);
+    }
 
 }
