@@ -46,7 +46,7 @@ public class UserController {
     public String delete(@PathVariable final Long id) {
         userService.deleteUser(id);
 
-        return "redirect:/trees";
+        return "redirect:/user/all";
     }
 
     @GetMapping("/update/{id}")
@@ -60,7 +60,7 @@ public class UserController {
     @PostMapping("/update_save/{id}")
     public String updatedUserSave(@PathVariable final Long id, @ModelAttribute("user") final UserDto userDto) {
         userService.updateUser(userDto, id);
-        return "redirect:/trees";
+        return "redirect:/user/all";
     }
 
 }
