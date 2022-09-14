@@ -3,9 +3,15 @@ package com.treesviewer.trees.entity;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 import java.util.List;
-import java.util.Set;
 
 @Data
 @NoArgsConstructor
@@ -13,27 +19,21 @@ import java.util.Set;
 @Table(name="users")
 public class User {
 
+    public User(final String username, final String password, final List<Tree> trees, final Role role) {
+        this.username = username;
+        this.password = password;
+        this.trees = trees;
+        this.role = role;
+    }
+
     @Id
     @GeneratedValue
     private Long id;
-    private String login;
+    private String username;
     private String password;
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Tree> trees = List.of();
-
-    @CollectionTable(
-            name = "useres_roles",
-            joinColumns = @JoinColumn(name = "user_id")
-    )
-    @Column(name = "role")
-    @ElementCollection(fetch = FetchType.EAGER)
-    private Set<String> roles = Set.of();
-
-    User(final String login, final String password, final List<Tree> trees) {
-        this.login = login;
-        this.password = password;
-        this.trees = trees;
-        this.roles = Set.of("ROLE_USER");
-    }
+    @Enumerated(value = EnumType.STRING)
+    private Role role;
 
 }
