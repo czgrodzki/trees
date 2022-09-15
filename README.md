@@ -19,4 +19,5 @@
 <li>Go to docker folder</li>
 <li>Run docker container with PostgreSQL using command <code>docker compose up -d</code></li>
 <li>Start the app in your favourite IDE</li>
+<li>Create new user or log in as admin with pass: admin</li>
 </ol>
